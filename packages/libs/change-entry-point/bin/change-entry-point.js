@@ -1,6 +1,15 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { isCI } from 'ci-info';
+// https://nodejs.org/api/packages.html#exports
+const exportConditions = [
+    'node-addons',
+    'node',
+    'import',
+    'require',
+    'module-sync',
+    'default'
+];
 const rewritePath = (value) => value.replace(/^(\.\/)?src\//, './dist/').replace(/(?<!\.d)\.ts$/, '.js');
 const rewriteExports = (exportsMap) => {
     for (const [key, val] of Object.entries(exportsMap)) {
@@ -9,12 +18,11 @@ const rewriteExports = (exportsMap) => {
         }
         else if (typeof val === 'object' && val !== null) {
             const updated = { ...val };
-            if (val.import)
-                updated.import = rewritePath(val.import);
-            if (val.require)
-                updated.require = rewritePath(val.require);
-            if (val.default)
-                updated.default = rewritePath(val.default);
+            for (const condition of exportConditions) {
+                if (val[condition]) {
+                    updated[condition] = rewritePath(val[condition]);
+                }
+            }
             exportsMap[key] = updated;
         }
     }
@@ -45,7 +53,7 @@ export const changeEntryPointByCwd = (cwd) => {
     const pathToManifest = path.resolve(cwd, './package.json');
     const manifest = JSON.parse(readFileSync(pathToManifest, 'utf8'));
     changeManifestEntryPoint(manifest);
-    writeFileSync(pathToManifest, JSON.stringify(manifest, null, 4));
+    writeFileSync(pathToManifest, JSON.stringify(manifest, null, 2) + '\n', 'utf8');
 };
 export const changeEntryPoint = (force = false) => {
     if (isCI || force) {

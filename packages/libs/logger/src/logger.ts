@@ -80,7 +80,7 @@ export const createLogger = (level: string, pretty: boolean) => {
   };
 };
 
-const level = IS_DEV === 'development' ? 'debug' : 'info';
+const level = IS_DEV ? 'debug' : 'info';
 export const logger = createLogger(level, IS_DEV);
 
 const getLogLevel = (statusCode: number) => {

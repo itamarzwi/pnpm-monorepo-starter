@@ -3,16 +3,6 @@ import path from 'node:path';
 
 import { isCI } from 'ci-info';
 
-export interface Manifest {
-    main?: string;
-    main__prod?: string;
-    exports?: Record<string, string | {
-        import?: string;
-        require?: string;
-        types?: string;
-        default?: string;
-    }>;
-}
 
 // https://nodejs.org/api/packages.html#exports
 const exportConditions = [
@@ -22,7 +12,14 @@ const exportConditions = [
     'require',
     'module-sync',
     'default'
-]
+] as const;
+type ExportCondition = (typeof exportConditions)[number];
+
+export interface Manifest {
+    main?: string;
+    main__prod?: string;
+    exports?: Record<string, string | Record<ExportCondition, string | undefined>>;
+}
 
 const rewritePath = (value: string): string =>
     value.replace(/^(\.\/)?src\//, './dist/').replace(/(?<!\.d)\.ts$/, '.js');

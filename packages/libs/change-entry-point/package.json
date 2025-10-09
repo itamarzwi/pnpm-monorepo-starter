@@ -9,7 +9,7 @@
     "main": "bin/index.js",
     "types": "src/index.ts",
     "scripts": {
-        "build": "tsc -p tsconfig.build.json",
+        "build": "rimraf bin && tsc -p tsconfig.build.json",
         "lint": "tsc --noEmit && eslint \"./**/*.ts\" --max-warnings 0",
         "lint:fix": "eslint \"./**/*.ts\" --max-warnings 0 --fix",
         "test": "node --import=tsx --test src/*.test.ts && tsc -p tsconfig.eslint.json"
@@ -20,6 +20,7 @@
     "devDependencies": {
         "@tsconfig/node22": "catalog:",
         "@types/node": "catalog:",
+        "rimraf": "catalog:",
         "tsx": "catalog:",
         "typescript": "catalog:"
     }
