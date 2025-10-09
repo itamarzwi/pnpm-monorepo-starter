@@ -1,0 +1,16 @@
+{
+  "name": "@org/monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo root for org",
+  "private": true,
+  "scripts": {
+    "lint:all": "pnpm -r lint",
+    "lint:fix:all": "pnpm -r lint:fix",
+    "prepare": "is-ci && echo \"CI env detected, skipping husky installation\" || husky"
+  },
+  "packageManager": "pnpm@10.18.1+sha512.77a884a165cbba2d8d1c19e3b4880eee6d2fcabd0d879121e282196b80042351d5eb3ca0935fa599da1dc51265cc68816ad2bddd2a2de5ea9fdf92adbec7cd34",
+  "devDependencies": {
+    "husky": "catalog:",
+    "is-ci": "catalog:"
+  }
+}

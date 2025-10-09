@@ -1,0 +1,12 @@
+packages:
+  - packages/**
+
+catalogMode: prefer
+
+cleanupUnusedCatalogs: true
+
+injectWorkspacePackages: true
+
+nodeVersion: 22.18.0
+
+useNodeVersion: 22.18.0
