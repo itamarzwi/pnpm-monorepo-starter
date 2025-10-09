@@ -35,32 +35,36 @@ const getAutoLocation = () => {
   return `${rematch.groups.location} (${rematch.groups.caller})`;
 };
 
+export const LOG_LEVELS = ['error', 'warn', 'info', 'debug', 'silly'] as const;
+export type LogLevel = typeof LOG_LEVELS[number];
+export const isLogLevel = (level: string): level is LogLevel => LOG_LEVELS.includes(level as LogLevel);
 type Tail<T extends unknown[]> = T extends [unknown, ...infer Rest] ? Rest : never;
 const getLoggerFunctions = (logger: Logger) => {
-  const logFunctions = {
-    error: (message: string, meta?: Record<string, unknown>) => logger.error(message, meta),
-    warn: (message: string, meta?: Record<string, unknown>) => logger.warn(message, meta),
-    debug: (message: string, meta?: Record<string, unknown>) => logger.debug(message, meta),
-    info: (message: string, meta?: Record<string, unknown>) => logger.info(message, meta),
-  } as const;
-
-  const logWithLocation = (level: keyof typeof logFunctions, message: string, meta: Record<string, unknown> = {}) => {
-    meta = { ...meta, location: getAutoLocation() };
-    logFunctions[level](message, meta);
+  const logWithLocation = (level: LogLevel, message: string, meta: Record<string, unknown> = {}) => {
+    const location = getAutoLocation();
+    logger.log({
+      level,
+      message,
+      location,
+      ...meta,
+    });
   };
 
-  /* eslint-disable @stylistic/no-multi-spaces, @stylistic/key-spacing */
-  return {
+  const fns: Record<LogLevel, (...args: Tail<Parameters<typeof logWithLocation>>) => void> = {
+    /* eslint-disable @stylistic/no-multi-spaces, @stylistic/key-spacing */
     error: (...args: Tail<Parameters<typeof logWithLocation>>) => logWithLocation('error', ...args),
     warn:  (...args: Tail<Parameters<typeof logWithLocation>>) => logWithLocation('warn',  ...args),
     info:  (...args: Tail<Parameters<typeof logWithLocation>>) => logWithLocation('info',  ...args),
     debug: (...args: Tail<Parameters<typeof logWithLocation>>) => logWithLocation('debug', ...args),
-  } as const satisfies Record<keyof typeof logFunctions, unknown>;
-  /* eslint-enable @stylistic/no-multi-spaces, @stylistic/key-spacing */
+    silly: (...args: Tail<Parameters<typeof logWithLocation>>) => logWithLocation('silly', ...args),
+    /* eslint-enable @stylistic/no-multi-spaces, @stylistic/key-spacing */
+  };
+
+  return fns;
 };
 
 export const createLogger = (level: string, pretty: boolean) => {
-  const logger = winston.createLogger({
+  const driver = winston.createLogger({
     level,
     format: winston.format.combine(
       winston.format.timestamp(),
@@ -73,8 +77,8 @@ export const createLogger = (level: string, pretty: boolean) => {
   });
 
   return {
-    driver: logger,
-    ...getLoggerFunctions(logger),
+    driver,
+    ...getLoggerFunctions(driver),
   };
 };
 
