@@ -1,0 +1,21 @@
+{
+    "name": "@org/errors",
+    "description": "Library for managing errors",
+    "private": true,
+    "type": "module",
+    "main": "src/index.ts",
+    "types": "src/index.ts",
+    "scripts": {
+        "build": "rimraf dist && tsc -p tsconfig.build.json && ci-change-entry-point",
+        "lint": "tsc --noEmit && eslint \"./**/*.ts\" --max-warnings 0",
+        "lint:fix": "eslint \"./**/*.ts\" --max-warnings 0 --fix"
+    },
+    "devDependencies": {
+        "@org/ci-change-entry-point": "workspace:*",
+        "@tsconfig/node22": "catalog:",
+        "@types/node": "catalog:",
+        "rimraf": "catalog:",
+        "tsx": "catalog:",
+        "typescript": "catalog:"
+    }
+}

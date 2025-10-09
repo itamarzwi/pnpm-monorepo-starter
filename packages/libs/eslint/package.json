@@ -1,0 +1,39 @@
+{
+  "name": "@org/eslint",
+  "description": "eslint config files and custom plugins",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --max-warnings 0 --fix"
+  },
+  "exports": {
+    "./base.js": "./src/configs/base.js",
+    "./node.js": "./src/configs/node.js",
+    "./react.js": "./src/configs/react.js"
+  },
+  "dependencies": {
+    "@eslint/js": "catalog:",
+    "@stylistic/eslint-plugin": "catalog:",
+    "@typescript-eslint/parser": "catalog:",
+    "@typescript-eslint/types": "catalog:",
+    "@typescript-eslint/utils": "catalog:",
+    "eslint": "catalog:",
+    "eslint-plugin-import": "catalog:",
+    "eslint-plugin-react": "catalog:",
+    "eslint-plugin-react-hooks": "catalog:",
+    "eslint-plugin-react-refresh": "catalog:",
+    "eslint-plugin-simple-import-sort": "catalog:",
+    "eslint-plugin-unicorn": "catalog:",
+    "eslint-plugin-unused-imports": "catalog:",
+    "eslint-plugin-vue": "catalog:",
+    "globals": "catalog:",
+    "typescript-eslint": "catalog:"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "catalog:",
+    "@types/eslint": "catalog:",
+    "@types/node": "catalog:"
+  }
+}

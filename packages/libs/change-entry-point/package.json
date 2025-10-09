@@ -1,0 +1,26 @@
+{
+    "name": "@org/ci-change-entry-point",
+    "description": "Change the entry point of a package from src/index.ts to dist/index.js in CI environments",
+    "private": true,
+    "type": "module",
+    "bin": {
+        "ci-change-entry-point": "./bin/cli.js"
+    },
+    "main": "bin/index.js",
+    "types": "src/index.ts",
+    "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "lint": "tsc --noEmit && eslint \"./**/*.ts\" --max-warnings 0",
+        "lint:fix": "eslint \"./**/*.ts\" --max-warnings 0 --fix",
+        "test": "node --import=tsx --test src/*.test.ts && tsc -p tsconfig.eslint.json"
+    },
+    "dependencies": {
+        "ci-info": "catalog:"
+    },
+    "devDependencies": {
+        "@tsconfig/node22": "catalog:",
+        "@types/node": "catalog:",
+        "tsx": "catalog:",
+        "typescript": "catalog:"
+    }
+}

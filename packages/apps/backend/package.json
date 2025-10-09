@@ -1,0 +1,31 @@
+{
+  "name": "@org/backend",
+  "description": "Backend for org",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --inspect ./src/index.ts",
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --max-warnings 0 --fix"
+  },
+  "dependencies": {
+    "@org/errors": "workspace:*",
+    "@org/logger": "workspace:*",
+    "@org/validate-request": "workspace:*",
+    "cors": "catalog:",
+    "dotenv": "catalog:",
+    "express": "catalog:",
+    "helmet": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "catalog:",
+    "@types/cors": "catalog:",
+    "@types/express": "catalog:",
+    "@types/node": "catalog:",
+    "rimraf": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  }
+}

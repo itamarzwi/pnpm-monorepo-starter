@@ -1,0 +1,29 @@
+{
+  "name": "@org/logger",
+  "description": "Logger",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.build.json && ci-change-entry-point",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --max-warnings 0 --fix"
+  },
+  "dependencies": {
+    "@org/utils": "workspace:*",
+    "chalk": "catalog:",
+    "json-colorizer": "catalog:",
+    "lodash-es": "catalog:",
+    "safe-stable-stringify": "catalog:",
+    "winston": "catalog:"
+  },
+  "devDependencies": {
+    "@org/ci-change-entry-point": "workspace:*",
+    "@tsconfig/node22": "catalog:",
+    "@types/express": "catalog:",
+    "@types/lodash-es": "catalog:",
+    "rimraf": "catalog:",
+    "typescript": "catalog:"
+  }
+}
