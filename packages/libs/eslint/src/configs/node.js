@@ -2,11 +2,11 @@ import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 
 import { mongooseUseExec } from '../rules/mongoose-use-exec.js';
-import { orgBaseConfig } from './base.js';
+import { orgBaseEslintConfig } from './base.js';
 
 export const orgNodeEslintConfig = defineConfig(
   // Base
-  orgBaseConfig,
+  orgBaseEslintConfig,
   // Node
   { languageOptions: { globals: globals.node } },
   // Imports

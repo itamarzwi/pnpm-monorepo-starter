@@ -17,5 +17,8 @@
         "rimraf": "catalog:",
         "tsx": "catalog:",
         "typescript": "catalog:"
+    },
+    "dependencies": {
+        "http-status-codes": "catalog:"
     }
 }

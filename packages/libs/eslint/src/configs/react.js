@@ -4,7 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 
-import { orgBaseConfig } from './base.js';
+import { orgBaseEslintConfig } from './base.js';
 
 export const orgReactEslintConfig = defineConfig(
   // Base
@@ -15,7 +15,7 @@ export const orgReactEslintConfig = defineConfig(
       globals: globals.browser,
     },
   },
-  orgBaseConfig,
+  orgBaseEslintConfig,
   // React
   pluginReact.configs.flat.recommended,
   reactHooks.configs['recommended-latest'],

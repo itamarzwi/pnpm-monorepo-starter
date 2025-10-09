@@ -59,22 +59,22 @@ export const orgBaseEslintConfig = defineConfig([
     },
   },
   // Unicorn
-  // TODO: CHANGE. Remove recommended, pick and choose rules manually
-  eslintPluginUnicorn.configs.recommended,
+  // Unicorn recommended rules are too aggressive and constantly updated with breaking changes
+  eslintPluginUnicorn.configs.unopinionated,
   {
     rules: {
-      'unicorn/consistent-function-scoping': 'off',
-      'unicorn/explicit-length-check': 'off',
-      'unicorn/filename-case': 'off',
-      'unicorn/import-style': 'off',
+      'unicorn/catch-error-name': ['error', { name: 'error' }],
+      'unicorn/consistent-empty-array-spread': 'error',
+      'unicorn/empty-brace-spaces': 'warn',
+      'unicorn/expiring-todo-comments': 'off',
+      'unicorn/explicit-length-check': 'warn',
       'unicorn/no-array-for-each': 'off',
-      'unicorn/no-array-callback-reference': 'off', // This is the dumbest rule in the history of humankind
-      'unicorn/no-array-reverse': 'off',
-      'unicorn/no-null': 'off',
-      'unicorn/prefer-query-selector': 'off',
+      'unicorn/no-await-expression-member': 'error',
+      'unicorn/no-for-loop': 'error',
+      'unicorn/no-nested-ternary': 'error',
+      'unicorn/no-process-exit': 'off',
       'unicorn/prefer-string-raw': 'off',
       'unicorn/prefer-switch': 'off',
-      'unicorn/prevent-abbreviations': 'off',
     },
   },
   // Style
@@ -86,6 +86,7 @@ export const orgBaseEslintConfig = defineConfig([
     rules: {
       'arrow-body-style': 'warn',
       '@stylistic/arrow-parens': ['warn', 'always'],
+      '@stylistic/operator-linebreak': 'off',
       '@stylistic/space-before-function-paren': 'off',
     },
   },

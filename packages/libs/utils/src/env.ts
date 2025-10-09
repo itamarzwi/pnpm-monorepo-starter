@@ -1,6 +1,7 @@
 if (!process.env.NODE_ENV) {
-    console.error('Cannot run without NODE_ENV set');
-    process.exit(1);
+  // eslint-disable-next-line no-console
+  console.error('Cannot run without NODE_ENV set');
+  process.exit(1);
 }
 
 export const NODE_ENV = process.env.NODE_ENV;

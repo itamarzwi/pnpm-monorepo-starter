@@ -22,7 +22,7 @@ export class AppError extends Error {
   constructor(args: AppErrorArgs);
   constructor(messageOrArgs: string | AppErrorArgs, metaOrType?: ErrorMeta | ErrorType, maybeStatus?: number, maybeMeta?: ErrorMeta) {
     let message = '';
-    let type: ErrorType = 'internal-server-error';
+    let type: ErrorType = '500';
     let status = 500;
     let meta: ErrorMeta | undefined;
 

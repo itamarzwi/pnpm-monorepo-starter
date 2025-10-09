@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import chalk from 'chalk';
 import { type RequestHandler } from 'express';
 import winston, { type Logger } from 'winston';
@@ -105,7 +103,6 @@ const methodColorized = (method: string) => {
 };
 
 export const requestLogger = (): RequestHandler =>
-  // eslint-disable-next-line unicorn/consistent-function-scoping
   (req, res, next) => {
     const start = Date.now();
     res.on('finish', () => {
