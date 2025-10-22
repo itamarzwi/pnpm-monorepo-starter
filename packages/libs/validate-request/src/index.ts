@@ -1,7 +1,7 @@
 import { type RequestHandler } from 'express';
 import { type z, type ZodError, type ZodType } from 'zod';
 
-import { AppBadRequestError } from '@falcon-analytics/errors';
+import { AppBadRequestError } from '@org/errors';
 
 // Code adapted from https://github.com/Aquila169/zod-express-middleware
 

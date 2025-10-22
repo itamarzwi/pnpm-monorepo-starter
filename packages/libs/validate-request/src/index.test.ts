@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import { type IRouterMatcher, type Request, type Response } from 'express';
 import { z } from 'zod';
 
-import { AppBadRequestError } from '@falcon-analytics/errors';
+import { AppBadRequestError } from '@org/errors';
 
 import { validateBody, validateParams, validateQuery, validateRequest } from './index.js';
 

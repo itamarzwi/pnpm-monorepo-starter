@@ -12,8 +12,8 @@
   "dependencies": {
     "@org/errors": "workspace:*",
     "@org/logger": "workspace:*",
+    "@org/utils": "workspace:*",
     "@org/validate-request": "workspace:*",
-    "cors": "catalog:",
     "dotenv": "catalog:",
     "express": "catalog:",
     "helmet": "catalog:",
@@ -21,7 +21,6 @@
   },
   "devDependencies": {
     "@tsconfig/node22": "catalog:",
-    "@types/cors": "catalog:",
     "@types/express": "catalog:",
     "@types/node": "catalog:",
     "rimraf": "catalog:",

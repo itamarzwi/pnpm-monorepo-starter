@@ -7,24 +7,117 @@ settings:
 
 catalogs:
   default:
+    '@eslint/js':
+      specifier: ^9.37.0
+      version: 9.37.0
+    '@stylistic/eslint-plugin':
+      specifier: ^5.4.0
+      version: 5.4.0
     '@tsconfig/node22':
       specifier: 22.0.2
       version: 22.0.2
+    '@types/eslint':
+      specifier: ^9.6.1
+      version: 9.6.1
+    '@types/express':
+      specifier: ^5.0.3
+      version: 5.0.3
+    '@types/lodash-es':
+      specifier: ^4.17.12
+      version: 4.17.12
     '@types/node':
       specifier: 22.16.5
       version: 22.16.5
+    '@typescript-eslint/parser':
+      specifier: ^8.46.0
+      version: 8.46.0
+    '@typescript-eslint/types':
+      specifier: ^8.46.0
+      version: 8.46.0
+    '@typescript-eslint/utils':
+      specifier: ^8.46.0
+      version: 8.46.0
+    chalk:
+      specifier: ^5.6.2
+      version: 5.6.2
+    ci-info:
+      specifier: ^4.3.1
+      version: 4.3.1
+    dotenv:
+      specifier: ^17.2.3
+      version: 17.2.3
+    eslint:
+      specifier: 9.37.0
+      version: 9.37.0
+    eslint-plugin-import:
+      specifier: ^2.32.0
+      version: 2.32.0
+    eslint-plugin-react:
+      specifier: ^7.37.5
+      version: 7.37.5
+    eslint-plugin-react-hooks:
+      specifier: ^7.0.0
+      version: 7.0.0
+    eslint-plugin-react-refresh:
+      specifier: ^0.4.23
+      version: 0.4.23
+    eslint-plugin-simple-import-sort:
+      specifier: ^12.1.1
+      version: 12.1.1
+    eslint-plugin-unicorn:
+      specifier: ^61.0.2
+      version: 61.0.2
+    eslint-plugin-unused-imports:
+      specifier: ^4.2.0
+      version: 4.2.0
+    eslint-plugin-vue:
+      specifier: ^10.5.0
+      version: 10.5.0
+    express:
+      specifier: ^5.1.0
+      version: 5.1.0
+    globals:
+      specifier: ^16.4.0
+      version: 16.4.0
+    helmet:
+      specifier: ^8.1.0
+      version: 8.1.0
     http-status-codes:
       specifier: ^2.3.0
       version: 2.3.0
+    husky:
+      specifier: ^9.1.7
+      version: 9.1.7
+    is-ci:
+      specifier: ^4.1.0
+      version: 4.1.0
+    json-colorizer:
+      specifier: ^3.0.1
+      version: 3.0.1
+    lodash-es:
+      specifier: ^4.17.21
+      version: 4.17.21
     rimraf:
       specifier: ^6.0.1
       version: 6.0.1
+    safe-stable-stringify:
+      specifier: ^2.5.0
+      version: 2.5.0
     tsx:
-      specifier: ^4.20.6
+      specifier: 4.20.6
       version: 4.20.6
     typescript:
       specifier: ^5.9.3
       version: 5.9.3
+    typescript-eslint:
+      specifier: ^8.46.0
+      version: 8.46.0
+    winston:
+      specifier: ^3.18.3
+      version: 3.18.3
+    zod:
+      specifier: ^4.1.12
+      version: 4.1.12
 
 importers:
 
@@ -51,12 +144,12 @@ importers:
       '@org/logger':
         specifier: workspace:*
         version: link:../../libs/logger
+      '@org/utils':
+        specifier: workspace:*
+        version: link:../../libs/utils
       '@org/validate-request':
         specifier: workspace:*
         version: link:../../libs/validate-request
-      cors:
-        specifier: 'catalog:'
-        version: 2.8.5
       dotenv:
         specifier: 'catalog:'
         version: 17.2.3
@@ -73,9 +166,6 @@ importers:
       '@tsconfig/node22':
         specifier: 'catalog:'
         version: 22.0.2
-      '@types/cors':
-        specifier: 'catalog:'
-        version: 2.8.19
       '@types/express':
         specifier: 'catalog:'
         version: 5.0.3
@@ -122,7 +212,7 @@ importers:
     devDependencies:
       '@org/ci-change-entry-point':
         specifier: workspace:*
-        version: file:packages/libs/change-entry-point
+        version: link:../change-entry-point
       '@tsconfig/node22':
         specifier: 'catalog:'
         version: 22.0.2
@@ -623,10 +713,6 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@org/ci-change-entry-point@file:packages/libs/change-entry-point':
-    resolution: {directory: packages/libs/change-entry-point, type: directory}
-    hasBin: true
-
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
@@ -647,9 +733,6 @@ packages:
 
   '@types/connect@3.4.38':
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
-
-  '@types/cors@2.8.19':
-    resolution: {integrity: sha512-mFNylyeyqN93lfe/9CSxOGREz8cpzAhH+E93xJ4xWQf62V8sQ/24reV2nyzUWM6H6Xji+GGHpkbLe7pVoUEskg==}
 
   '@types/eslint@9.6.1':
     resolution: {integrity: sha512-FXx2pKgId/WyYo2jXw63kk7/+TY7u7AziEJxJAnSFzHlqTAS3Ync6SvgYAN/k4/PQpnnVuzoMuVnByKK2qp0ag==}
@@ -965,10 +1048,6 @@ packages:
 
   core-js-compat@3.45.1:
     resolution: {integrity: sha512-tqTt5T4PzsMIZ430XGviK4vzYSoeNJ6CXODi6c/voxOT6IZqBht5/EKaSNnYiEjjRYxjVz7DQIsOsY0XNi8PIA==}
-
-  cors@2.8.5:
-    resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==}
-    engines: {node: '>= 0.10'}
 
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
@@ -2551,10 +2630,6 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@org/ci-change-entry-point@file:packages/libs/change-entry-point':
-    dependencies:
-      ci-info: 4.3.1
-
   '@rtsao/scc@1.1.0': {}
 
   '@so-ric/colorspace@1.1.6':
@@ -2580,10 +2655,6 @@ snapshots:
       '@types/node': 22.16.5
 
   '@types/connect@3.4.38':
-    dependencies:
-      '@types/node': 22.16.5
-
-  '@types/cors@2.8.19':
     dependencies:
       '@types/node': 22.16.5
 
@@ -2965,11 +3036,6 @@ snapshots:
   core-js-compat@3.45.1:
     dependencies:
       browserslist: 4.26.3
-
-  cors@2.8.5:
-    dependencies:
-      object-assign: 4.1.1
-      vary: 1.1.2
 
   cross-spawn@7.0.6:
     dependencies:

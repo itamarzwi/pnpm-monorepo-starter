@@ -15,13 +15,13 @@ COPY packages ./packages
 
 # Install dependencies (pnpm handles monorepo workspace installation)
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store\
- pnpm install --filter="@falcon-analytics/backend..." --frozen-lockfile --prefer-offline
+ pnpm install --filter="@org/backend..." --frozen-lockfile --prefer-offline
 
 # Build the service (this will handle building all necessary packages for the backend)
-RUN pnpm --filter="@falcon-analytics/backend..." build
+RUN pnpm --filter="@org/backend..." build
 
 RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store\
-  pnpm --filter="@falcon-analytics/backend" deploy --prefer-offline --prod out
+  pnpm --filter="@org/backend" deploy --prefer-offline --prod out
 
 # Runner stage
 FROM node:22-alpine3.21 AS runner
